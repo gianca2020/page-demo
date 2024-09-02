@@ -1,11 +1,21 @@
-const pages = document.querySelectorAll('.page');
+const pages = document.querySelectorAll(".page");
 const translateAmount = 100;
 let translate = 0;
 
-next = (direction) => {
-    direction === "next" ? translate -= translateAmount : translate += translateAmount;
+function next() {
+  translate -= translateAmount;
+  updatePageTranslation();
+}
 
-    pages.forEach(
-        pages => (pages.style.transform = `translateX(${translate}%)`)
-    )
-};
+function prev() {
+  translate += translateAmount;
+  updatePageTranslation();
+}
+
+function updatePageTranslation() {
+  pages.forEach((page) => {
+    page.style.transform = `translateX(${translate}%)`;
+  });
+}
+
+console.log(pages);
